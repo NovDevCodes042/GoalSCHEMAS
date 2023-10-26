@@ -2,11 +2,14 @@ require("dotenv").config();
 const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
-const PORT = 7000;
+const cors = require ('cors');
+// const PORT = 7000;
+const PORT = process.env.PORT || 7000;
 const goalRouter = require("./Routes/GoalRouter.js")
 
 //midware 
 app.use(express.json())
+app.use(cors());
 
 //routes
 app.use("/api/goals", goalRouter)
